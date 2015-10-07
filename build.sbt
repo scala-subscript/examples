@@ -1,0 +1,6 @@
+lazy val ab            = project in file("ab-example")
+lazy val lookupframe   = project in file("lookupframe-example")
+lazy val life          = project in file("life-example")
+lazy val pingpong      = project in file("pingpong-example")
+lazy val twitter       = project in file("subscript-twitter-search")
+lazy val taskprocessor = project in file("taskprocessor")
