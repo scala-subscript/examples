@@ -14,7 +14,7 @@ To try the examples:
 - *helloworld* is a classic Hello World application
 - *ab* is a swing application to demonstrate some basic scripts
 - *lookupframe* demonstrates a more complex use case of scripting in the context of Swing
-- *life* is the (Game of Life)[http://link-to-wiki] simulator
+- *life* is the (Game of Life)[https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life] simulator
 - *twitter* searches Twitter's most recent tweets with a given keyword. Features dataflow, where the application is reactively bound to the input field, so that any input causes a new search.
 - *pingpong* is a use case of SubScript Akka Actors. Two actors that exchange a message three times.
 - *taskprocessor* is a more complex example of SubScript Actors. An actor system that is designed to process any given task by forking it, delegating parts to different actors and then joining the results together.
