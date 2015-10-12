@@ -1,5 +1,5 @@
 package subscript.example.life
-import subscript.file
+import subscript.language
 
 import scala.math._
 import scala.swing._

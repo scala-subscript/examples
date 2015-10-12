@@ -1,5 +1,5 @@
 package subscript.example.taskprocessor.ssactors
-import subscript.file
+import subscript.language
 
 import scala.language.postfixOps
 

@@ -1,5 +1,5 @@
 package subscript.example.taskprocessor.ssactors
-import subscript.file
+import subscript.language
 
 import akka.actor._
 import subscript.example.taskprocessor.Protocol._

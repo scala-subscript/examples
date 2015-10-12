@@ -1,5 +1,5 @@
 package subscript.example
-import subscript.file
+import subscript.language
 
 import subscript.DSL._
 

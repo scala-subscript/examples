@@ -1,5 +1,5 @@
 package subscript.twitter.app.controller
-import subscript.file
+import subscript.language
 
 import subscript.DSL._
 import subscript.swing.Scripts._
