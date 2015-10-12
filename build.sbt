@@ -5,3 +5,6 @@ lazy val life          = project in file("life-example")
 lazy val pingpong      = project in file("pingpong-example")
 lazy val twitter       = project in file("subscript-twitter-search")
 lazy val taskprocessor = project in file("taskprocessor")
+
+lazy val root = (project in file("."))
+  .aggregate(ab, helloworld, lookupframe, life, pingpong, twitter, taskprocessor)
