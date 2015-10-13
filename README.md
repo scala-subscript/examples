@@ -18,7 +18,7 @@ To try the examples:
 4. Run `projects` from the SBT console. You will see the list of all the examples in the repository, each belonging to its own project. `root` is not an example, but the root project, so ignore it.
 5. To run an example, run the `<exmaple_project_name>/run` command, where `<example_project_name>` is the name of the desired example, as listed in the `projects` command's output. For example, if you want to try the "lookupframe" example, run `lookupframe/run`.
 6. Some examples have more then one object with the `main` method. In this case the console will prompt you to specify what you want to run. In case of "Lookup Frame", entering `1` in the prompt will run a simple "LookupFrame", and entering `2` will run the more complex "LookupFrame2".
-7. In order to start developing with SubScript, please head to the main repository and follow its "Getting Started guide"
+7. In order to start developing with SubScript, please head to the [main repository](https://github.com/scala-subscript/subscript) and follow its "Getting Started guide"
 
 ## Examples description
 - **helloworld** is a classic Hello World application
