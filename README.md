@@ -12,7 +12,7 @@ Also, you need to know the basics of working with the command line.
 ## Getting started
 To try the examples:
 
-1. Clone the repository by running `git clone https://github.com/scala-subscript/examples.git`
+1. Clone this repository by running `git clone https://github.com/scala-subscript/examples.git`
 2. Go to the root of the repository: `cd examples`
 3. Launch the SBT console by running `sbt`
 4. Run `projects` from the SBT console. You will see the list of all the examples in the repository, each belonging to its own project.
