@@ -1,14 +1,21 @@
 # SubScript examples
 This repository contains examples of the usage of SubScript.
 
+## Prerequisites
+You will need the following software in order to run the examples:
+1. Git client - [official website](https://git-scm.com/), [download manual](https://git-scm.com/downloads)
+2. SBT build tool - [official website](http://www.scala-sbt.org/), [download manual](http://www.scala-sbt.org/download.html)
+Also, you need to know the basics of working with the command line.
+
 ## Getting started
 To try the examples:
 
 1. Clone the repository by running `git clone https://github.com/scala-subscript/examples.git`
-2. From the root of the repository, run `sbt`. The SBT console will be opened.
-3. Run `projects` from the console. You will see the list of all the examples in the repository, each belonging to its own project.
-4. To run an example, run the `<exmaple_project_name>/run` command. For example, if you want to try the "lookupframe" example, run `lookupframe/run`.
-5. Some examples have more then one object with the `main` method. In this case the console will prompt you to specify what you want to run. In case of "Lookup Frame", entering `1` in the prompt will run a simple "LookupFrame", and entering `2` will run the more complex "LookupFrame2".
+2. Go to the root of the repository: `cd examples`
+3. Launch the SBT console by running `sbt`
+4. Run `projects` from the SBT console. You will see the list of all the examples in the repository, each belonging to its own project.
+5. To run an example, run the `<exmaple_project_name>/run` command, where `<example_project_name>` is the name of the desired example, as listed in the `projects` command's output. For example, if you want to try the "lookupframe" example, run `lookupframe/run`.
+6. Some examples have more then one object with the `main` method. In this case the console will prompt you to specify what you want to run. In case of "Lookup Frame", entering `1` in the prompt will run a simple "LookupFrame", and entering `2` will run the more complex "LookupFrame2".
 
 ## Examples description
 - **helloworld** is a classic Hello World application
