@@ -3,6 +3,7 @@ This repository contains examples of the usage of SubScript.
 
 ## Prerequisites
 You will need the following software in order to run the examples:
+
 1. Git client - [official website](https://git-scm.com/), [download manual](https://git-scm.com/downloads)
 2. SBT build tool - [official website](http://www.scala-sbt.org/), [download manual](http://www.scala-sbt.org/download.html)
 Also, you need to know the basics of working with the command line.
