@@ -81,7 +81,7 @@ class LifeFrameApplication extends BasicLifeFrameApplication {
 	multiStepStartCmd  =     startButton + Key.Enter
 	 multiStepStopCmd  =      stopButton + Key.Enter
 	
-	doExit             =   exitCommand @gui: {!confirmExit!} ~~(r:Boolean)~~> while (!r)
+	doExit             =   exitCommand [@gui: {!confirmExit!}^] ~~(r:Boolean)~~> while (!r)
 	                  //   exitCommand @gui: {confirmExit} ==> while(!_)
       boardControl     = ...; noise / [.. singleStep] multiStep || clear || randomize
 
