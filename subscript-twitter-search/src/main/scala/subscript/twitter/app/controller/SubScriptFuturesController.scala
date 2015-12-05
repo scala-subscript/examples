@@ -31,7 +31,7 @@ class SubScriptFuturesController(val view: View) extends Controller {
   val faulter = InterruptableFuture {throw new Exception("Never faulter")}
 
   implicit script f2s(intf: InterruptableFuture[_]): Any =
-    @{intf.execute().onComplete {case aTry => there.executeForTry(aTry)}}: {.  .}
+    @{intf.execute().onComplete {case aTry => there.executeForTry(aTry); `script`.$ = aTry}}: {.  .}
 
   script..
 
