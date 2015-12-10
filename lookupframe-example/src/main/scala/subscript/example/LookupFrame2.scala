@@ -48,7 +48,7 @@ class LookupFrame2Application extends SimpleSubscriptApplication {
     cancelCommand     = cancelButton + Key.Escape 
     exitCommand       =   exitButton + windowClosing: top
     
-    doExit            =   exitCommand [@gui: {!confirmExit!}^] ~~(r:Boolean)~~> while (!r)
+    doExit            =   exitCommand @gui: {!confirmExit!} ~~(r:Boolean)~~> while (!r)
     cancelSearch      = cancelCommand showCanceledText
     
     liveScript        = ... searchSequence || doExit
