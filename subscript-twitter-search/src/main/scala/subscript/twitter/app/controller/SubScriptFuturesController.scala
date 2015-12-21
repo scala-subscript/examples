@@ -35,7 +35,7 @@ class SubScriptFuturesController(val view: View) extends Controller {
 
   script..
 
-    liveScript = initialize ; [mainSequence / ..]...
+    liveScript = initialize ; [mainSequence / ..?]...
 
     initialize = view.main: Array()
 

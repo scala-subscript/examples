@@ -28,7 +28,7 @@ class SubScriptController(val view: View) extends Controller {
 
   //live = initialize ; mainSequence (-) / ..    works as well
 
-    liveScript = initialize ; [mainSequence / ..]...
+    liveScript = initialize ; [mainSequence / ..?]...
 
     initialize = view.main: Array()
 

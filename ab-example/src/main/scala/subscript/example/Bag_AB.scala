@@ -52,7 +52,7 @@ object Bag_AB_loops extends Bag_AB_Application {
   def getTitle = "Bag = (A a & ..) & (B b & ..)"
 
  override script..
-   liveScript = [ A a & .. ]
-              & [ B b & .. ]
+   liveScript = [ A a & ..? ]
+              & [ B b & ..? ]
 }
 

@@ -45,9 +45,9 @@ abstract class ABApplication extends SimpleSubscriptApplication {
 
 object AsBX extends ABApplication {
  def getTitle = "A..; B; exit"
- override script liveScript = A ..; B; doExit
+ override script liveScript = A ..?; B; doExit
 }
 object AsBsX extends ABApplication {
  def getTitle = "A..B; exit"
- override script liveScript = A .. B; doExit
+ override script liveScript = A ..? B; doExit
 }

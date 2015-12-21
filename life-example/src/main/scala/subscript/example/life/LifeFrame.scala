@@ -83,7 +83,7 @@ class LifeFrameApplication extends BasicLifeFrameApplication {
 	
 	doExit             =   exitCommand @gui: {!confirmExit!} ~~(r:Boolean)~~> while (!r)
 	                  //   exitCommand @gui: {confirmExit} ==> while(!_)
-      boardControl     = ...; noise / [.. singleStep] multiStep || clear || randomize
+      boardControl     = ...; noise / [..? singleStep] multiStep || clear || randomize
 
       do1Step          = {*board.calculateGeneration*} @gui: board.validate
       
