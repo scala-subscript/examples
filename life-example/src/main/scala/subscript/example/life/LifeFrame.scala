@@ -70,18 +70,18 @@ class LifeFrameApplication extends BasicLifeFrameApplication {
      
   implicit script..
   
-    key(??c: Char     ) =  key2: top, ??c
-   vkey(??k: Key.Value) = vkey2: top, ??k
+     key(??c: Char     ) =  key2: top, ??c
+    vkey(??k: Key.Value) = vkey2: top, ??k
 
   script ..
-	 randomizeCommand  = randomizeButton + 'r'
-	     clearCommand  =     clearButton + 'c'
-	      stepCommand  =      stepButton + ' '
-	      exitCommand  =      exitButton + windowClosing: top
-	multiStepStartCmd  =     startButton + Key.Enter
-	 multiStepStopCmd  =      stopButton + Key.Enter
+	  randomizeCommand  = randomizeButton + 'r'
+	     clearCommand   =     clearButton + 'c'
+	      stepCommand   =      stepButton + ' '
+	      exitCommand   =      exitButton + windowClosing: top
+	  multiStepStartCmd =     startButton + Key.Enter
+	  multiStepStopCmd  =      stopButton + Key.Enter
 	
-	doExit             =   exitCommand @gui: {!confirmExit!} ~~(r:Boolean)~~> while (!r)
+	  doExit             =   exitCommand @gui: {!confirmExit!} ~~(r:Boolean)~~> while (!r)
 	                  //   exitCommand @gui: {confirmExit} ==> while(!_)
       boardControl     = ...; noise / [..? singleStep] multiStep || clear || randomize
 
@@ -102,13 +102,13 @@ class LifeFrameApplication extends BasicLifeFrameApplication {
                        + [ val c: Char = (pass_up1+'0').toChar; key: c setSpeed: char2Value(c)] // TBD: make here an implicit parameter
                           
                        // Note: first "("...")" pair is needed because else the ifs would be nested
-   speedButtonInput =   [if speed>minSpeed then speedDecButton]
+    speedButtonInput =   [if speed>minSpeed then speedDecButton]
                       + [if speed<maxSpeed then speedIncButton]
     
      speedDecButton = minSpeedButton setSpeed: minSpeed + slowerButton setSpeed: (speed-1)
      speedIncButton = maxSpeedButton setSpeed: maxSpeed + fasterButton setSpeed: (speed+1)
      
-   speedSliderInput = speedSlider setSpeed: speedSlider.value
+    speedSliderInput = speedSlider setSpeed: speedSlider.value
 
       mouseInput    = [mouseClickInput & mouseDragInput]
                       /  doubleClick [mouseMoveInput / doubleClick resetLastMousePos]
@@ -117,7 +117,7 @@ class LifeFrameApplication extends BasicLifeFrameApplication {
  //mouseClickInput  = mouseSingleClick (board, ?p:java.awt.Point) {! doMouseSingleClick(p) !} ... 
 //                     !@#%^&$ mouseSingleClick also reacts on double clicks!!! 
 //                     So wait 220 ms; if by then no mouseDoubleClick as arrived, do the singleClick action:
-   mouseClickInput  = var p:java.awt.Point=null
+    mouseClickInput  = var p:java.awt.Point=null
                       mouseSingleClick: board, ?p
                         ...
                       ; resetLastMousePos
@@ -136,8 +136,8 @@ TBD as soon as mouseSingleClick has a java.awt.Point as result:
 */
                       
                     
-   doubleClick      = var p:java.awt.Point=null; mouseDoubleClick(board, ?p)
-   mouse_Released   = var p:java.awt.Point=null; mouseReleased(   board, ?p)
+    doubleClick      = var p:java.awt.Point=null; mouseDoubleClick(board, ?p)
+    mouse_Released   = var p:java.awt.Point=null; mouseReleased(   board, ?p)
  //mouse_Released   = var p:java.awt.Point=null mouseReleased(   board, ActualOutputParameter(p, (v:java.awt.Point)=>p=v)) // TBD: "?p"; mouseReleased instead of mouse_Released yields "too many arguments for method" error
     mouseDragInput  = mouseDraggings(board, (e: MouseEvent) => handleMouseDrag(e.point)) / [mouse_Released  resetLastMousePos]; ...
     mouseMoveInput  = mouseMoves(    board, (e: MouseEvent) => handleMouseMove(e.point)) 
