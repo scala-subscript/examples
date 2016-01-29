@@ -1,9 +1,7 @@
 scalaVersion := "2.11.6"
 
 libraryDependencies ++= Seq(
-  "org.subscript-lang" %% "subscript-swing" % "3.0.0"
-
-, "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.2"
+  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.2"
 , "commons-codec" % "commons-codec" % "1.10"
 
 , "junit" % "junit" % "4.11" % Test

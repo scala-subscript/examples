@@ -1,1 +1,1 @@
-addSbtPlugin("org.subscript-lang" %% "subscript-sbt-plugin" % "3.0.0")
+addSbtPlugin("org.subscript-lang" %% "subscript-sbt-plugin" % "3.0.1-SNAPSHOT")

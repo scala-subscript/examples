@@ -117,14 +117,15 @@ class LifeFrameApplication extends BasicLifeFrameApplication {
  //mouseClickInput  = mouseSingleClick (board, ?p:java.awt.Point) {! doMouseSingleClick(p) !} ... 
 //                     !@#%^&$ mouseSingleClick also reacts on double clicks!!! 
 //                     So wait 220 ms; if by then no mouseDoubleClick as arrived, do the singleClick action:
-    mouseClickInput  = var p:java.awt.Point=null
-                      mouseSingleClick: board, ?p
-                        ...
-                      ; resetLastMousePos
-                      ; [ {*sleep_ms(220)*} here.break_up(2) / mouseDoubleClick: board, ?p ]
-                      ; ...
-                      handleMouseSingleClick: p
-                      ...
+    mouseClickInput  = mouseSingleClick: board ~~(p:java.awt.Point)~~> [
+                          ...
+                        ; resetLastMousePos
+                        ; [ {*sleep_ms(220)*} here.break_up(2) / mouseDoubleClick: board ]
+                        ; ...
+                          handleMouseSingleClick: p
+                       ]
+                       +~~(null)~~> [+]
+                       ...
 /*  
 TBD as soon as mouseSingleClick has a java.awt.Point as result:
                  
@@ -136,8 +137,8 @@ TBD as soon as mouseSingleClick has a java.awt.Point as result:
 */
                       
                     
-    doubleClick      = var p:java.awt.Point=null; mouseDoubleClick(board, ?p)
-    mouse_Released   = var p:java.awt.Point=null; mouseReleased(   board, ?p)
+    doubleClick      = mouseDoubleClick: board
+    mouse_Released   = mouseReleased:    board
  //mouse_Released   = var p:java.awt.Point=null mouseReleased(   board, ActualOutputParameter(p, (v:java.awt.Point)=>p=v)) // TBD: "?p"; mouseReleased instead of mouse_Released yields "too many arguments for method" error
     mouseDragInput  = mouseDraggings(board, (e: MouseEvent) => handleMouseDrag(e.point)) / [mouse_Released  resetLastMousePos]; ...
     mouseMoveInput  = mouseMoves(    board, (e: MouseEvent) => handleMouseMove(e.point)) 
