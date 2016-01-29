@@ -1,7 +1,8 @@
 val subscriptVersion = "3.0.1-SNAPSHOT"
 
 val commonSettings = Seq(
-  libraryDependencies += "org.subscript-lang" %% "subscript-swing" % subscriptVersion
+  scalaVersion := "2.11.7"
+, libraryDependencies += "org.subscript-lang" %% "subscript-swing" % subscriptVersion
 )
 
 val actorSettings = Seq(
@@ -23,6 +24,8 @@ lazy val taskprocessor = (project in file("taskprocessor"))
     , "org.scala-lang.modules" %% "scala-xml"    % "1.0.4"  % Test
     )
   )
+
+lazy val filedownloader = (project in file("filedownloader")).settings(commonSettings: _*)
 
 lazy val root = (project in file("."))
   .aggregate(ab, helloworld, lookupframe, life, pingpong, twitter, taskprocessor)
