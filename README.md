@@ -31,8 +31,8 @@ You can use graphical debugger to see how the projects work. To do so:
 
 ### Commands for setting the main class
 - Lookup frame (`project lookupframe`)
-    - `set mainClass in Compile := Some("subscript.example.LookupFrame")
-    - `set mainClass in Compile := Some("subscript.example.LookupFrame2")
+    - `set mainClass in Compile := Some("subscript.example.LookupFrame")`
+    - `set mainClass in Compile := Some("subscript.example.LookupFrame2")`
 - AB (`project ab`)
     - `set mainClass in Compile := Some("subscript.example.AsBX")`
     - `set mainClass in Compile := Some("subscript.example.AsBsX")`
