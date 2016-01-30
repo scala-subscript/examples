@@ -117,14 +117,13 @@ class LifeFrameApplication extends BasicLifeFrameApplication {
  //mouseClickInput  = mouseSingleClick (board, ?p:java.awt.Point) {! doMouseSingleClick(p) !} ... 
 //                     !@#%^&$ mouseSingleClick also reacts on double clicks!!! 
 //                     So wait 220 ms; if by then no mouseDoubleClick as arrived, do the singleClick action:
-    mouseClickInput  = mouseSingleClick: board ~~(p:java.awt.Point)~~> [
+    mouseClickInput  = mouseSingleClick: board ~~(MouseClicked(_, p:java.awt.Point, _, _, _))~~> [
                           ...
                         ; resetLastMousePos
                         ; [ {*sleep_ms(220)*} here.break_up(2) / mouseDoubleClick: board ]
                         ; ...
                           handleMouseSingleClick: p
                        ]
-                       +~~(null)~~> [+]
                        ...
 /*  
 TBD as soon as mouseSingleClick has a java.awt.Point as result:
