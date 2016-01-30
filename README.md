@@ -20,7 +20,7 @@ To try the examples:
 6. Some examples have more then one object with the `main` method. In this case the console will prompt you to specify what you want to run. In case of "Lookup Frame", entering `1` in the prompt will run a simple "LookupFrame", and entering `2` will run the more complex "LookupFrame2".
 7. In order to start developing with SubScript, please head to the [main repository](https://github.com/scala-subscript/subscript) and follow its "Getting Started guide"
 
-## Debuggin the projects
+## Debugging the projects
 You can use graphical debugger to see how the projects work. To do so:
 
 1. From the examples' root, run `sbt`.
