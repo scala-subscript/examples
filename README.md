@@ -24,9 +24,9 @@ To try the examples:
 You can use graphical debugger to see how the projects work. To do so:
 
 1. From the examples' root, run `sbt`.
-2. Set the current project to a desired one: `project *projectName*`, where `*projectName*` is a name from `projects` command output.
+2. Set the current project to a desired one: `project projectName`, where `projectName` is a name from `projects` command output.
 3. Some projects have more then one main class. To see the project's main classes, run `show discoveredMainClasses`.
-4. If the project has more than one main class, you'll have to specify which one you want to debug: `set mainClass in Compile := Some("*main_class_name*")`, where `*main_class_name*` is some name from the `show discoveredMainClasses` output. If the project has only one main class, no action is needed, it will be used automaticaly.
+4. If the project has more than one main class, you'll have to specify which one you want to debug: `set mainClass in Compile := Some("main_class_name")`, where `main_class_name` is some name from the `show discoveredMainClasses` output. If the project has only one main class, no action is needed, it will be used automaticaly.
 5. Run `ssDebug`.
 
 ## Examples description
