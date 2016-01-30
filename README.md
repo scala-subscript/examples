@@ -26,7 +26,7 @@ You can use graphical debugger to see how the projects work. To do so:
 1. From the examples' root, run `sbt`.
 2. Set the current project to a desired one: `project projectName`, where `projectName` is a name from `projects` command output.
 3. Some projects have more then one main class. To see the project's main classes, run `show discoveredMainClasses`.
-4. If the project has more than one main class, you'll have to specify which one you want to debug: `set mainClass in Compile := Some("main_class_name")`, where `main_class_name` is some name from the `show discoveredMainClasses` output (see the complete list of commands for setting the main class below). If the project has only one main class, no action is needed, it will be used automaticaly.
+4. If the project has more than one main class, you'll have to specify which one you want to debug: `set mainClass in Compile := Some("main_class_name")`, where `main_class_name` is some name from the `show discoveredMainClasses` output (see the complete list of commands for setting the main class [below](https://github.com/scala-subscript/examples#commands-for-setting-the-main-class)). If the project has only one main class, no action is needed, it will be used automaticaly.
 5. Run `ssDebug`.
 
 ### Commands for setting the main class
