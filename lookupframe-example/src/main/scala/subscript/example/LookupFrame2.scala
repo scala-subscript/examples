@@ -52,7 +52,7 @@ class LookupFrame2Application extends SimpleSubscriptApplication {
     cancelSearch      = cancelCommand showCanceledText
     
     liveScript        = ... searchSequence || doExit
-    searchSequence    = guard: searchTF, (()=> !searchTF.text.isEmpty) // searchCommand should not be active if the text field is empty
+    searchSequence    = guard: searchTF, !searchTF.text.trim.isEmpty // searchCommand only active if the text field is nonempty
                         searchCommand
                         showSearchingText searchInDatabase showSearchResults / cancelSearch
     
