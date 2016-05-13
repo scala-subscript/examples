@@ -18,17 +18,30 @@ object PingPong {
   class Pong extends SubScriptActor {
 
     script..
-      live = receivePing ...
+      live = receivePing ... // or: `receivePingWith[ActorDebug | Conditioning] ...`
+
       receivePing = // << msg @ "ping" => println(msg); sender ! "pong" >>
         var a: ActorRef = null
-        ?a ~~(msg @ "ping")~~> [println: msg do a ! "pong"]
+        ?a ~~(msg @ "ping")~~> [println: msg do! a ! "pong"]
+
+      receivePingWithConditioning =
+        var a: ActorRef = null
+        ?a ?if (a != null) ~~(msg @ "ping")~~> [println: msg do! a ! "pong"]
+
+      receivePingWithActorDebug =
+        var a: ActorRef = null
+        receivePingInternals: ?a
+        println: a
+
+      receivePingInternals(??a: ActorRef) =
+        ??a ~~(msg @ "ping")~~> [println: msg do! a ! "pong"]
   }
  
   class Ping(target: ActorRef) extends SubScriptActor {
  
     script..
       live = times: 3 sendPing receivePong
-      sendPing = do target ! "ping" // {!target ! "ping"!}
+      sendPing = do! target ! "ping" // {!target ! "ping"!}
       receivePong = target ~~(msg @ "pong")~~> println: msg // << msg @ "pong" => println(msg)>>
 
   }
