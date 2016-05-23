@@ -44,6 +44,9 @@ class LookupFrame2Application extends SimpleSubscriptApplication {
   implicit script vkey(??k: Key.Value) = vkey2: top, ??k
 
   script..
+
+    liveScript        = ... searchSequence || doExit
+
     searchCommand     = searchButton + Key.Enter
     cancelCommand     = cancelButton + Key.Escape 
     exitCommand       =   exitButton + windowClosing: top
@@ -51,15 +54,15 @@ class LookupFrame2Application extends SimpleSubscriptApplication {
     doExit            =   exitCommand @gui: {!confirmExit!} ~~(r:Boolean)~~> while (!r)
     cancelSearch      = cancelCommand showCanceledText
     
-    liveScript        = ... searchSequence || doExit
-    searchSequence    = guard: searchTF, !searchTF.text.trim.isEmpty // searchCommand only active if the text field is nonempty
+    searchSequence    = guard: searchTF, !searchTF.text.trim.isEmpty
                         searchCommand
                         showSearchingText searchInDatabase showSearchResults / cancelSearch
     
     showSearchingText = @gui: {outputTA.text = "Searching: "+searchTF.text}
     showCanceledText  = @gui: {outputTA.text = "Searching Canceled"}
     showSearchResults = @gui: {outputTA.text = "Results: 1, 2, 3" }
-    searchInDatabase  = {*sleep(5000)*}||progressMonitor
+
+    searchInDatabase  = {*sleep(5000)*} || progressMonitor
     
     progressMonitor   = ... @gui: {outputTA.text+=here.pass} {*sleep(200)*}
     
