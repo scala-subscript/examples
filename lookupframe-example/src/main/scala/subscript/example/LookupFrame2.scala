@@ -9,8 +9,8 @@ import subscript.swing.Scripts._
 
 // Subscript sample application: a text entry field with a search button, that simulates the invocation of a background search
 //
-// Note: the main part of this source file has been manually compiled from Subscript code into plain Scala
-// object LookupFrame2 extends LookupFrame2Application
+
+object LookupFrame2 extends LookupFrame2Application
 
 class LookupFrame2Application extends SimpleSubscriptApplication {
   import scala.language.implicitConversions
@@ -36,7 +36,8 @@ class LookupFrame2Application extends SimpleSubscriptApplication {
   val f = top.peer.getRootPane().getParent().asInstanceOf[javax.swing.JFrame]
   f.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE) // TBD: does not seem to work on MacOS
   
-  def sleep(duration_ms: Long) = try {Thread.sleep(duration_ms)} catch {case e: InterruptedException => /*println("sleep interrupted")*/}
+  def sleep(duration_ms: Long) = try {Thread.sleep(duration_ms)}
+                                 catch {case e: InterruptedException => /*println("sleep interrupted")*/}
   def confirmExit: Boolean = Dialog.showConfirmation(null, "Are you sure?", "About to exit")==Dialog.Result.Yes
   
   override def  live = subscript.DSL._execute(liveScript)
@@ -58,48 +59,12 @@ class LookupFrame2Application extends SimpleSubscriptApplication {
                         searchCommand
                         showSearchingText searchInDatabase showSearchResults / cancelSearch
     
-    showSearchingText = @gui: {outputTA.text = "Searching: "+searchTF.text}
-    showCanceledText  = @gui: {outputTA.text = "Searching Canceled"}
-    showSearchResults = @gui: {outputTA.text = "Results: 1, 2, 3" }
+    showSearchingText = @gui: let outputTA.text = "Searching: "+searchTF.text
+    showCanceledText  = @gui: let outputTA.text = "Searching Canceled"
+    showSearchResults = @gui: let outputTA.text = "Results: 1, 2, 3"
 
-    searchInDatabase  = {*sleep(5000)*} || progressMonitor
+    searchInDatabase  = {* sleep(5000) *} || progressMonitor
     
-    progressMonitor   = ... @gui: {outputTA.text+=here.pass} {*sleep(200)*}
+    progressMonitor   = ... @gui: {outputTA.text+=here.pass} do* sleep(200)
     
-/*
- override def _live     = _script(this, 'live             ) {_par_or2(_seq(_loop, _searchSequence), _exit)}
-  def _searchCommand     = _script(this, 'searchCommand    ) {_alt(_clicked(searchButton), _vkey(Key.Enter))} 
-  def _cancelCommand     = _script(this, 'cancelCommand    ) {_alt(_clicked(cancelButton), _vkey(Key.Escape))}
-  def   _exitCommand     = _script(this, 'exitCommand      ) {_alt(_clicked(  exitButton), _windowClosing(top))}
-  def _cancelSearch      = _script(this, 'cancelSearch     ) {_seq(_cancelCommand, _at{gui0} (_call{_showCanceledText}))}
-  def _searchSequence    = _script(this, 'searchSequence   ) {_seq(_guard(searchTF, ()=> !(searchTF.text.isEmpty)),  
-                                                                   _searchCommand, 
-                                                                 _disrupt(_seq(_showSearchingText, _searchInDatabase, _showSearchResults),
-                                                                                 _cancelSearch ))}
-
-  def   _exit            = {val _r = _declare[Boolean]('r)
-                           _script(this, 'exit) {_seq(_var(_r, (here:N_localvar[_]) => false), 
-                                                      _exitCommand,
-                                                      _at{gui0} (_normal{here => _r.at(here).value = confirmExit}),
-                                                      _while{here=> {! _r.at(here).value}})}
-  }
-  
-  def _showSearchingText = _script(this, 'showSearchingText) {_at{gui0} (_normal0 {            
-    outputTA.text = 
-      "Searching: "+searchTF.text
-      })}
-  def _showSearchResults = _script(this, 'showSearchResults) {_at{gui0} (_normal{(here: N_code_normal) => 
-    outputTA.text = "Found: "+here.index+" items"})}
-  def _showCanceledText  = _script(this, 'showCanceledText ) {_at{gui0} (_normal0 {outputTA.text = "Searching Canceled"})}
-  def _searchInDatabase  = _script(this, 'searchInDatabase ) {_par_or2(_threaded0{sleep(5000)}, _progressMonitor)} 
-  def _progressMonitor   = _script(this, 'progressMonitor  ) {
-  _seq(_loop, 
-      _at{gui0} (_normal{(here: N_code_normal) => outputTA.text+=" "+pass(here)}), 
-      _threaded0{sleep(200)})}
- 
-  def _vkey(_k:FormalConstrainedParameter[Key.Value]) = _script(this, 'vkey, _k~??'k) {subscript.swing.Scripts._vkey(top, _k~??)}
-               
-// bridge method   
-override def live = _execute(_live)
-*/  
 }
