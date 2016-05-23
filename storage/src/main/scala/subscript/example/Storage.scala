@@ -25,9 +25,12 @@ object Storage {
   implicit script f2s(f: Future[_]): Any =
     @{f.onComplete {case aTry => there.executeForTry(aTry); `script`.$ = aTry}}: {.  .}
 
+  /** Contains data in a map */
   class Store extends SubScriptActor {
+    // Each entry is composed of a `data` part and `details` part (see its definition below).
     private var data = Map[String, Entry]()
 
+    // Accpets requests for 1) writing an entry, 2) reading the data of an entry and 3) reading the details of an entry
     script..
       live =
         var a: ActorRef = null
@@ -37,16 +40,18 @@ object Storage {
         ...
   }
 
+  /** An interface to be used when interacting with the data store. */
   class Proxy(store: ActorRef) extends SubScriptActor {
     script live =
       var anActor: ActorRef = null
-      ?anActor ~~(wr     : WriteReq)~~> do! store ! wr
-              +~~(req    : DataReq )~~> {store ? req} 
+      ?anActor ~~(wr     : WriteReq)~~> do! store ! wr  // Write operation is redirected to the store as is
+              +~~(req    : DataReq )~~> {store ? req}   // Data request will first request the `data` part of the given entry, then its `details`, then compose them in a typle
                ~~(data   : Data    )~~> {store ? DetailsReq(req.key)}
                ~~(details: Details )~~> do! anActor ! (data, details)
       ...
   }
 
+  /** Simulates a user interacting with the data store. */
   class Probe(proxy: ActorRef) extends SubScriptActor {
     script live =
       do! proxy ! WriteReq("k", Entry("data", "details"))
