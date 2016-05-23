@@ -1,4 +1,4 @@
-val subscriptVersion = "3.0.3-SNAPSHOT"
+val subscriptVersion = "3.0.4"
 
 val commonSettings = Seq(
   scalaVersion := "2.11.7"
