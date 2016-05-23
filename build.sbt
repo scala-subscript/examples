@@ -15,6 +15,8 @@ lazy val lookupframe   = (project in file("lookupframe-example")).settings(commo
 lazy val life          = (project in file("life-example")).settings(commonSettings: _*)
 lazy val pingpong      = (project in file("pingpong-example")).settings(actorSettings: _*)
 lazy val twitter       = (project in file("subscript-twitter-search")).settings(commonSettings: _*)
+
+lazy val storage       = (project in file("storage")).settings(actorSettings: _*)
 // lazy val taskprocessor = (project in file("taskprocessor"))
 //   .settings(actorSettings: _*)
 //   .settings(
