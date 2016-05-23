@@ -10,8 +10,8 @@ object Main {
 
   def main(args: Array[String]): Unit = {
     val view = new View()
-    new SubScriptFuturesController(view).start()
-    // new SubScriptController(view).start()
+    // new SubScriptFuturesController(view).start()
+    new SubScriptController(view).start()
     //new PureController(view).start()
   }
 

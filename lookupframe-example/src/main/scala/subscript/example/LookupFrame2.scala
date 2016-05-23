@@ -10,7 +10,7 @@ import subscript.swing.Scripts._
 // Subscript sample application: a text entry field with a search button, that simulates the invocation of a background search
 //
 // Note: the main part of this source file has been manually compiled from Subscript code into plain Scala
-object LookupFrame2 extends LookupFrame2Application
+// object LookupFrame2 extends LookupFrame2Application
 
 class LookupFrame2Application extends SimpleSubscriptApplication {
   import scala.language.implicitConversions
