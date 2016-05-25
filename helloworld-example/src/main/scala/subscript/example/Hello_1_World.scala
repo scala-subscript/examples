@@ -6,7 +6,8 @@ import subscript.DSL._
 // Subscript sample application: Hello+(+); World
 //
 object Hello_1_World {
-  // def main(args: Array[String]) {_execute(live)}
+  // bridge method:
+  def main( args: Array[String]): Unit = _execute(live)
    
   script live = {!println("Hello,")!} + [+]; 
                 {!println("world!")!}
