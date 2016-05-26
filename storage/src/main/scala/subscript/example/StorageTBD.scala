@@ -43,7 +43,7 @@ import scala.concurrent.Future
  * 1. Pass a received WriteReq on to the store.
  *    The Scala code for sending a write request `wr` to `store` is `store ! wr`
  *
- * 2. Forward the request to the store, await the answer (which is of type Data),
+ * 2. Forward the data request DataReq to the store, await the answer (which is of type Data),
  *    and send that back to the original requester.
  *    Use here the syntax `store ? req`. This returns a future that will later receive the answer back from the store.
  *    That answer should be replied back.
@@ -73,7 +73,7 @@ import scala.concurrent.Future
  *
  * 6. The sequence of communications with the `store` and with the original requester,
  *    does not leave receiving other messages in between, since everything is done in a sequential loop.
- *    Depending on how SubScriptActors are implemented, this may result in newle arrived messages to be thrown away.
+ *    Depending on how SubScriptActors are implemented, this may result in newly arrived messages to be thrown away.
  *    It may therefore be useful to do the communications sequence in parallel with handling newly arrived messages.
  *    That may be done in 2 ways:
  *
