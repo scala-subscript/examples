@@ -18,15 +18,11 @@ class SubScriptController(val view: View) extends Controller {
       executor.traceLevel = 2
       debugger.traceLevel = 4
       _execute(liveScript)
-      //_execute(_live(), debugger, executor)
   }
-  //def start() = _execute(_live())
 
   def sleep(t: Long) = Thread sleep t
 
   script..
-
-  //live = initialize ; mainSequence (-) / ..    works as well
 
     liveScript = initialize ; [mainSequence / ..?]...
 

@@ -1,13 +1,12 @@
 # SubScript examples
-This repository contains examples of the usage of SubScript.
+This repository contains several small SubScript example applications.
+LookupFrame2TBD is a training assignment.
 
 ## Prerequisites
 You will need the following software in order to run the examples:
 
 1. Git client - [official website](https://git-scm.com/), [download manual](https://git-scm.com/downloads)
 2. SBT build tool - [official website](http://www.scala-sbt.org/), [download manual](http://www.scala-sbt.org/download.html)
-
-Also, you need to know the basics of working with the command line.
 
 ## Getting started
 To try the examples:
@@ -16,7 +15,7 @@ To try the examples:
 2. Go to the root of the repository: `cd examples`
 3. Launch the SBT console by running `sbt`
 4. Run `projects` from the SBT console. You will see the list of all the examples in the repository, each belonging to its own project. `root` is not an example, but the root project, so ignore it.
-5. To run an example, run the `<exmaple_project_name>/run` command, where `<example_project_name>` is the name of the desired example, as listed in the `projects` command's output. For example, if you want to try the "lookupframe" example, run `lookupframe/run`.
+5. To run an example, run the `<example_project_name>/run` command, where `<example_project_name>` is the name of the desired example, as listed in the `projects` command's output. For example, if you want to try the "lookupframe" example, run `lookupframe/run`.
 6. Some examples have more then one object with the `main` method. In this case the console will prompt you to specify what you want to run. In case of "Lookup Frame", entering `1` in the prompt will run a simple "LookupFrame", and entering `2` will run the more complex "LookupFrame2".
 7. In order to start developing with SubScript, please head to the [main repository](https://github.com/scala-subscript/subscript) and follow its "Getting Started guide"
 
@@ -25,7 +24,7 @@ You can use graphical debugger to see how the projects work. To do so:
 
 1. From the examples' root, run `sbt`.
 2. Set the current project to a desired one: `project projectName`, where `projectName` is a name from `projects` command output.
-3. Some projects have more then one main class. To see the project's main classes, run `show discoveredMainClasses`.
+3. Some projects have more than one main class. To see the project's main classes, run `show discoveredMainClasses`.
 4. If the project has more than one main class, you'll have to specify which one you want to debug: `set mainClass in Compile := Some("main_class_name")`, where `main_class_name` is some name from the `show discoveredMainClasses` output (see the complete list of commands for setting the main class below). If the project has only one main class, no action is needed, it will be used automaticaly.
 5. Run `ssDebug`.
 
@@ -33,6 +32,7 @@ You can use graphical debugger to see how the projects work. To do so:
 - Lookup frame (`project lookupframe`)
     - `set mainClass in Compile := Some("subscript.example.LookupFrame")`
     - `set mainClass in Compile := Some("subscript.example.LookupFrame2")`
+    - `set mainClass in Compile := Some("subscript.example.LookupFrame2TBD")`
 - AB (`project ab`)
     - `set mainClass in Compile := Some("subscript.example.AsBX")`
     - `set mainClass in Compile := Some("subscript.example.AsBsX")`
@@ -41,6 +41,7 @@ You can use graphical debugger to see how the projects work. To do so:
     - `set mainClass in Compile := Some("subscript.example.Bag_AB")`
     - `set mainClass in Compile := Some("subscript.example.Bag_AB_loops")`
 - Hello World (`project helloworld`)
+    - `set mainClass in Compile := Some("subscript.example.Hello")`
     - `set mainClass in Compile := Some("subscript.example.HelloWorld")`
     - `set mainClass in Compile := Some("subscript.example.Hello_1_World")`
 

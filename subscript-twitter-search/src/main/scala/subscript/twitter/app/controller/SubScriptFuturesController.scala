@@ -9,7 +9,9 @@ import subscript.twitter.app.view.View
 
 import subscript.twitter.util.{InterruptableFuture, CancelException}
 import subscript.twitter.util.InterruptableFuture.Implicits.executionContext
-import scala.util.{Success, Failure}
+import scala.util.{Try, Success, Failure}
+
+import subscript.vm.model.callgraph.{CallGraphTreeNode, ScriptResultHolder}
 
 /**
  * Created by andre on 2/22/15.
@@ -25,13 +27,21 @@ class SubScriptFuturesController(val view: View) extends Controller {
       _execute(liveScript, debugger, executor)
   }
   def start() = _execute(liveScript)
-  
+
   val fWait   = InterruptableFuture {Thread sleep keyTypeDelay}
   val fSearch = InterruptableFuture {twitter.search(view.searchField.text, tweetsCount)}
   val faulter = InterruptableFuture {throw new Exception("Never faulter")}
 
   implicit script f2s(intf: InterruptableFuture[_]): Any =
-    @{intf.execute().onComplete {case aTry => there.executeForTry(aTry); `script`.$ = aTry}}: {.  .}
+    @{var isDeactivated = false
+      there.onDeactivate{isDeactivated = true}
+      intf.execute().onComplete {
+          case aTry => if (!isDeactivated) {
+                         there.executeForTry(aTry) // due to a bug, the
+                         `script`.$ = aTry
+                       }
+          }
+      }: {.  .}
 
   script..
 
